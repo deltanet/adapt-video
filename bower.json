@@ -1,0 +1,20 @@
+{
+  "name": "adapt-video",
+  "version": "2.0.0",
+  "framework": "^2.0.0",
+  "homepage": "https://github.com/deltanet/adapt-video",
+  "issues": "https://github.com/deltanet/adapt-video/issues/",
+  "displayName": "Video",
+  "component": "video",
+  "assetFields" : [
+    "_media.mp4",
+    "_media.poster"
+  ],
+  "description": "Playback of mp4 video",
+  "main": "/js/adapt-video.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}

@@ -1,0 +1,29 @@
+{
+    "_id":"c-15",
+    "_parentId":"b-10",
+    "_type":"component",
+    "_component":"video",
+    "_classes":"",
+    "_layout":"left",
+    "title":"Title of the video component",
+    "displayTitle": "Title of the video component",
+    "body": "This is optional body text. Select the play button to start the video.",
+    "instruction": "",
+    "_setCompletionOn":"inview",
+    "_autoPlay":false,
+    "_autoPlayOnce":false,
+    "_media": {
+        "mp4": "course/assets/big_buck_bunny.mp4",
+        "poster": "course/assets/big-buck-bunny.jpg"
+    },
+    "_transcript": {
+        "_setCompletionOnView":true,
+        "_inlineTranscript": true,
+        "_externalTranscript": false,
+        "inlineTranscriptButton": "Transcript",
+        "inlineTranscriptCloseButton": "Close Transcript",
+        "inlineTranscriptBody": "Transcript body text should go here",
+        "transcriptLinkButton": "Transcript",
+        "transcriptLink": "assets/transcript.pdf"
+    }
+}
