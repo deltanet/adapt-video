@@ -16,7 +16,7 @@ define(function(require) {
 
         preRender: function() {
             this.listenTo(Adapt, 'device:resize', this.onScreenSizeChanged);
-            this.listenTo(Adapt, 'accessibility:toggle', this.onAccessibilityToggle);
+            this.listenTo(Adapt, 'device:changed', this.onScreenSizeChanged);
             // Listen for notify closing
             this.listenTo(Adapt, 'popup:closed', this.notifyClosed);
             // Listen for notify opening
@@ -104,6 +104,10 @@ define(function(require) {
 
           var position = Math.round((100 / elementWidth) * value);
 
+          if (Adapt.config.get('_defaultDirection') == 'rtl') {
+              position = 100 - position;
+          }
+
           var videoduration = this.video.duration;
 
           this.video.currentTime = videoduration * position / 100;
@@ -112,7 +116,7 @@ define(function(require) {
         progressDown: function(event) {
           if (event) event.preventDefault();
 
-          var offset = this.$('.video-progress').offset();
+          var offset = this.$('.video-progressBar').offset();
           var xPos = event.pageX - offset.left;
 
           this.updatebar(xPos);
@@ -149,7 +153,7 @@ define(function(require) {
                     if (this.model.get('_setCompletionOn') == 'inview') {
                         this.setCompletionStatus();
                     }
-                    this.$('.component-inner').off('inview');
+                    this.$('.component-widget').off('inview');
                     this.videoIsInView = true;
                 } else {
                     this.playMediaElement(false);
@@ -174,7 +178,10 @@ define(function(require) {
         },
 
         remove: function() {
-            ComponentView.prototype.remove.call(this);
+          this.$('.video').off('ended');
+          this.$('.video').off('timeupdate');
+          this.$('.component-widget').off('inview');
+          ComponentView.prototype.remove.call(this);
         },
 
         onCompletion: function() {
@@ -183,11 +190,7 @@ define(function(require) {
         },
 
         onScreenSizeChanged: function() {
-            this.$('audio, video').width(this.$('.component-widget').width());
-        },
-
-        onAccessibilityToggle: function() {
-
+            this.$('video').width(this.$('.component-widget').width());
         },
 
         onToggleInlineTranscript: function(event) {

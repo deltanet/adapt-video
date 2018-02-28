@@ -1,8 +1,11 @@
 <div class="video-inner component-inner" role="region" aria-label="{{_globals._components._video.ariaRegion}} {{#if _video.transcriptLink}}{{_globals._components._video.transcriptButton}}{{/if}}" {{#if _globals._components._video.ariaRegion}}tabindex="0"{{/if}}>
     {{> component this}}
     <div class="video-widget component-widget a11y-ignore-aria">
-      <video preload="none" width="640" height="360" poster="{{_media.poster}}" style="width:100%; height:100%;" controls="controls" id="video">
+      <video preload="none" width="100%" poster="{{_media.poster}}" controls="controls" id="video">
         <source src="{{_media.mp4}}" type="video/mp4"/>
+        {{#if _useClosedCaptions}}
+          <track kind="subtitles" src="{{_media.cc.src}}" type="text/vtt" srclang="{{_media.cc.srclang}}" default>
+        {{/if}}
       </video>
       <button class="base video-overlay-button" role="button"></button>
       <div class="video-progressBar">

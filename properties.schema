@@ -38,6 +38,41 @@
       "help": "This is the instruction text",
       "translatable": true
     },
+    "_setCompletionOn": {
+      "type":"string",
+      "required":true,
+      "enum": ["inview", "play", "ended"],
+      "default": "inview",
+      "title": "Set completion of Video on",
+      "inputType": {"type": "Select", "options":["inview", "play", "ended"]},
+      "validators": ["required"],
+      "help": "This tells Adapt when to set this video to complete"
+    },
+    "_autoPlay": {
+      "type":"boolean",
+      "required": false,
+      "default": false,
+      "title": "Autoplay Is Enabled",
+      "inputType": "Checkbox",
+      "validators": []
+    },
+    "_autoPlayOnce": {
+      "type":"boolean",
+      "required": false,
+      "default": false,
+      "title": "Autoplay Once Is Enabled",
+      "inputType": "Checkbox",
+      "validators": []
+    },
+    "_useClosedCaptions": {
+      "type":"boolean",
+      "required":false,
+      "default": false,
+      "title": "Use Closed Captions",
+      "inputType": {"type": "Boolean", "options": [true, false]},
+      "validators": [],
+      "help": "If set to 'true', closed captions will be used."
+    },
     "_media": {
       "type":"object",
       "required":true,
@@ -126,43 +161,6 @@
         }
       }
     },
-    "_setCompletionOn": {
-      "type":"string",
-      "required":true,
-      "enum": ["inview", "play", "ended"],
-      "default": "inview",
-      "title": "Set completion of Video on",
-      "inputType": {"type": "Select", "options":["inview", "play", "ended"]},
-      "validators": ["required"],
-      "help": "This tells Adapt when to set this video to complete"
-    },
-    "_useClosedCaptions": {
-      "type":"boolean",
-      "required":false,
-      "default": false,
-      "title": "Use Closed Captions",
-      "inputType": {"type": "Boolean", "options": [true, false]},
-      "validators": [],
-      "help": "If set to 'true', closed captions will be used."
-    },
-    "_startLanguage": {
-      "type":"string",
-      "required":false,
-      "default": "en",
-      "title": "Initial Closed Captions language",
-      "inputType": "Text",
-      "validators": [],
-      "help": "Select which closed caption language to display by default. Only required when closed captions are enabled and there are multiple languages."
-    },
-    "_allowFullScreen": {
-      "type":"boolean",
-      "required":false,
-      "default": false,
-      "title": "Allow Full Screen",
-      "inputType": {"type": "Boolean", "options": [true, false]},
-      "validators": [],
-      "help": "If set to 'true', the full screen button will appear (excluding IE9)."
-    },
     "_transcript": {
       "type":"object",
       "required":false,
@@ -240,15 +238,6 @@
           "help": "Select a file for the transcript link"
         }
       }
-    },
-    "_playerOptions": {
-      "type":"string",
-      "required":false,
-      "default": "",
-      "title": "Player Options",
-      "inputType": "Text",
-      "validators": [],
-      "help": "Optional object that can be used to customize the player"
     }
   }
 }
